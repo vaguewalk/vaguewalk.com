@@ -5,33 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vague Walk</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body, html {
-            margin: 0;
-            padding: 0;
             width: 100%;
             height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Arka planı doğrudan body'e değil, bir katmana veriyoruz ki yüklenmesi garantilensin */
-            background: #222; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
             color: white;
-            overflow: hidden;
         }
 
-        .bg-overlay {
+        /* Video Arka Plan Ayarları */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            object-fit: cover; /* Videoyu ekranı kaplayacak şekilde yayar */
+        }
+
+        /* Karartma Perdesi (Logonun ve butonların okunması için) */
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Attığın gece/ışık izli görsele en yakın yüksek kalite street görseli */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background: rgba(0, 0, 0, 0.55);
             z-index: -1;
         }
 
@@ -42,49 +51,49 @@
         }
 
         .logo {
-            /* Logoyu iyice büyüttük, senin örnekteki gibi çok baskın */
-            width: 320px; 
-            max-width: 80%;
-            margin-bottom: 50px;
-            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
+            /* Senin istediğin gibi devasa logo */
+            width: 380px; 
+            max-width: 85%;
+            margin-bottom: 35px;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
         }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn {
             text-decoration: none;
             color: white;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 18px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.08);
+            padding: 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
             font-weight: 700;
             letter-spacing: 1.5px;
             backdrop-filter: blur(10px);
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .btn:hover {
             background: #fff;
             color: #000;
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .counter-box {
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         #step-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -94,19 +103,25 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin: 0;
-            text-shadow: 0 8px 25px rgba(0,0,0,0.8);
+            text-shadow: 0 5px 25px rgba(0,0,0,0.8);
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-overlay"></div>
+    <!-- Arka Plan Videosu -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="vague_backgroundvideo_1.mp4" type="video/mp4">
+    </video>
+
+    <!-- Karartma Katmanı -->
+    <div class="overlay"></div>
 
     <div class="container">
         <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Butonlar -->
+        <!-- Sosyal Linkler -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -115,7 +130,7 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- Adım Sayacı -->
+        <!-- 18.000 Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
@@ -124,7 +139,7 @@
 
     <script>
         const targetSteps = 18000; 
-        const duration = 3000; 
+        const duration = 2500; 
 
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
