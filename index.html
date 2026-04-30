@@ -12,7 +12,7 @@
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
-            background-color: #000;
+            background-color: #111; /* Video yüklenene kadar koyu arka plan */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,24 +23,24 @@
         /* Video Arka Plan Ayarları */
         #bg-video {
             position: fixed;
-            right: 0;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
             min-width: 100%;
             min-height: 100%;
             width: auto;
             height: auto;
             z-index: -2;
-            object-fit: cover; /* Videoyu ekranı kaplayacak şekilde yayar */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
 
-        /* Karartma Perdesi (Logonun ve butonların okunması için) */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.5); /* Hafif karartma */
             z-index: -1;
         }
 
@@ -51,7 +51,6 @@
         }
 
         .logo {
-            /* Senin istediğin gibi devasa logo */
             width: 380px; 
             max-width: 85%;
             margin-bottom: 35px;
@@ -67,12 +66,12 @@
         .btn {
             text-decoration: none;
             color: white;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             padding: 16px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 1.5px;
             backdrop-filter: blur(10px);
             text-transform: uppercase;
@@ -82,8 +81,6 @@
         .btn:hover {
             background: #fff;
             color: #000;
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .counter-box {
@@ -94,34 +91,33 @@
             font-size: 0.85rem;
             color: rgba(255,255,255,0.9);
             margin-bottom: 8px;
-            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
+            /* YAZIYI İNCE YAPTIK */
+            font-weight: 300; 
         }
 
         #step-number {
+            /* RAKAMI İNCE YAPTIK */
+            font-weight: 200; 
             font-size: 3.5rem;
-            font-weight: 900;
             margin: 0;
-            text-shadow: 0 5px 25px rgba(0,0,0,0.8);
+            text-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
 
-    <!-- Arka Plan Videosu -->
+    <!-- Video Dosya İsmi: vague_backgroundvideo_1.mp4 -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="vague_backgroundvideo_1.mp4" type="video/mp4">
     </video>
 
-    <!-- Karartma Katmanı -->
     <div class="overlay"></div>
 
     <div class="container">
-        <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Sosyal Linkler -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -130,7 +126,6 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- 18.000 Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
