@@ -12,82 +12,86 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Daha 'street' odaklı, derinliği olan yeni bir arka plan görseli */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1476900966873-ab290e38e3f7?q=80&w=2000&auto=format&fit=crop');
+            /* Attığın görsele en yakın, uzun pozlama ışık izli profesyonel sokak görseli */
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('https://images.unsplash.com/photo-1506146332389-18140ed74d5b?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: white;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
+            overflow: hidden;
         }
 
         .container {
-            max-width: 450px;
+            max-width: 480px;
             width: 90%;
         }
 
         .logo {
-            width: 220px;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            /* Logoyu senin istediğin gibi daha büyük ve baskın hale getirdik */
+            width: 280px; 
+            margin-bottom: 45px;
+            filter: drop-shadow(0 5px 20px rgba(0,0,0,0.6));
         }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn {
             text-decoration: none;
             color: white;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             padding: 16px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(5px);
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            backdrop-filter: blur(8px);
+            text-transform: uppercase;
+            font-size: 0.95rem;
         }
 
         .btn:hover {
             background: rgba(255, 255, 255, 1);
             color: black;
-            transform: scale(1.03);
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .counter-box {
-            margin-top: 50px;
-            padding-top: 20px;
+            margin-top: 55px;
+            padding-top: 25px;
         }
 
         #step-text {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 8px;
-            font-weight: 600;
-            /* Yazıyı büyük harf yapma ve harf arasını biraz açma */
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 10px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2.5px;
         }
 
         #step-number {
-            font-size: 2.8rem;
-            font-weight: bold;
+            font-size: 3.2rem;
+            font-weight: 800;
             margin: 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 5px 20px rgba(0,0,0,0.7);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Logo -->
+        <!-- Büyük Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Sosyal Medya -->
+        <!-- Güncel Linkler -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -96,7 +100,7 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- Adım Sayacı -->
+        <!-- 18.000 Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
@@ -105,15 +109,13 @@
 
     <script>
         const targetSteps = 18000; 
-        const duration = 2000; 
+        const duration = 2800; 
 
-        // Çevirileri Büyük Harf Olarak Güncelledik
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
             'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS',
             'de': 'GESAMTSCHRITTE FÜR VIDEOAUFNAHMEN',
-            'fr': 'NOMBRE TOTAL DE PAS EFFECTUÉS POUR LES TOURNAGES',
-            'es': 'PASOS TOTALES DADOS PARA LOS RODAJES'
+            'fr': 'NOMBRE TOTAL DE PAS EFFECTUÉS POUR LES TOURNAGES'
         };
 
         const userLang = navigator.language.split('-')[0];
@@ -125,7 +127,7 @@
         function animateSteps(timestamp) {
             if (!startTime) startTime = timestamp;
             const progress = Math.min((timestamp - startTime) / duration, 1);
-            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const easeOut = 1 - Math.pow(1 - progress, 4);
             const currentSteps = Math.floor(easeOut * targetSteps);
             
             stepElement.innerText = currentSteps.toLocaleString(userLang === 'tr' ? 'tr-TR' : 'en-US');
