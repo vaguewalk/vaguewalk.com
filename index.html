@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vague Walk</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            /* En zarif ve ince görünüm için font ailesi */
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+        }
+
+        /* Arka Plan Görseli */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Yeni büyük görselin: vaguebg_2.png */
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('vaguebg_2.png?v=10');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            z-index: 1;
+        }
+
+        /* Büyütülmüş Logo */
+        .logo {
+            width: 420px; 
+            max-width: 90%;
+            margin-bottom: 45px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Link Butonları */
+        .btn {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 2px;
+            backdrop-filter: blur(8px);
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Alt Sayaç Alanı */
+        .counter-box {
+            margin-top: 60px;
+        }
+
+        #step-text {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            /* İNCE PUNTO */
+            font-weight: 200; 
+        }
+
+        #step-number {
+            /* ULTRA İNCE PUNTO */
+            font-weight: 100; 
+            font-size: 4.5rem;
+            margin: 0;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="vague_logo_1.png?v=10" alt="Vague Walk" class="logo">
+
+        <!-- Sosyal Medya Linkleri -->
+        <div class="links">
+            <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
+            <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@vaguewalkcom" target="_blank" class="btn">TIKTOK</a>
+            <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">PINTEREST</a>
+            <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
+        </div>
+
+        <!-- Adım Sayacı -->
+        <div class="counter-box">
+            <p id="step-text"></p>
+            <p id="step-number">0</p>
+        </div>
+    </div>
+
+    <script>
+        const targetSteps = 18000; 
+        const duration = 2500; 
+
+        const translations = {
+            'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
+            'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS'
+        };
+
+        const userLang = navigator.language.split('-')[0];
+        document.getElementById('step-text').innerText = translations[userLang] || translations['en'];
+
+        const stepElement = document.getElementById('step-number');
+        let startTime = null;
+
+        function animateSteps(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 4);
+            const currentSteps = Math.floor(easeOut * targetSteps);
+            
+            stepElement.innerText = currentSteps.toLocaleString(userLang === 'tr' ? 'tr-TR' : 'en-US');
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(animateSteps);
+            }
+        }
+        window.requestAnimationFrame(animateSteps);
+    </script>
+</body>
+</html>
