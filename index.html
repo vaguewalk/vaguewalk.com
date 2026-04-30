@@ -12,9 +12,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* Arka plana Unsplash'ten yüksek kaliteli bir sokak çekimi ekledim */
+            /* Daha 'street' odaklı, derinliği olan yeni bir arka plan görseli */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=2000&auto=format&fit=crop');
+                        url('https://images.unsplash.com/photo-1476900966873-ab290e38e3f7?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: white;
@@ -23,15 +23,13 @@
         }
 
         .container {
-            /* Çerçeveyi ve gri arka planı kaldırdık, sadece içeriği merkeze aldık */
             max-width: 450px;
             width: 90%;
         }
 
         .logo {
-            width: 220px; /* Logoyu biraz daha belirgin yaptık */
+            width: 220px;
             margin-bottom: 40px;
-            /* Hafif bir gölge ile logonun her zeminde okunmasını sağladık */
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
 
@@ -44,14 +42,14 @@
         .btn {
             text-decoration: none;
             color: white;
-            background: rgba(255, 255, 255, 0.15); /* Daha şeffaf ve cam efekti */
+            background: rgba(255, 255, 255, 0.15);
             padding: 16px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
             font-weight: 500;
             letter-spacing: 0.5px;
-            backdrop-filter: blur(5px); /* Arka planı hafifçe flulaştırarak şıklık katar */
+            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
@@ -68,8 +66,11 @@
         #step-text {
             font-size: 0.9rem;
             color: rgba(255,255,255,0.8);
-            margin-bottom: 5px;
-            font-weight: 300;
+            margin-bottom: 8px;
+            font-weight: 600;
+            /* Yazıyı büyük harf yapma ve harf arasını biraz açma */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         #step-number {
@@ -88,11 +89,11 @@
 
         <!-- Sosyal Medya -->
         <div class="links">
-            <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YouTube</a>
-            <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">Instagram</a>
-            <a href="https://www.tiktok.com/@vaguewalkcom" target="_blank" class="btn">TikTok</a>
-            <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">Pinterest</a>
-            <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (Twitter)</a>
+            <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
+            <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@vaguewalkcom" target="_blank" class="btn">TIKTOK</a>
+            <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">PINTEREST</a>
+            <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
         <!-- Adım Sayacı -->
@@ -103,18 +104,20 @@
     </div>
 
     <script>
-        const targetSteps = 125450; 
-        const duration = 2500; 
+        const targetSteps = 18000; 
+        const duration = 2000; 
 
-        const messages = {
-            'tr': 'Video çekimleri için atılan toplam adım',
-            'en': 'Total steps taken for video shoots',
-            'de': 'Gesamtschritte für Videoaufnahmen',
-            'fr': 'Pas totaux pour les tournages vidéo'
+        // Çevirileri Büyük Harf Olarak Güncelledik
+        const translations = {
+            'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
+            'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS',
+            'de': 'GESAMTSCHRITTE FÜR VIDEOAUFNAHMEN',
+            'fr': 'NOMBRE TOTAL DE PAS EFFECTUÉS POUR LES TOURNAGES',
+            'es': 'PASOS TOTALES DADOS PARA LOS RODAJES'
         };
 
         const userLang = navigator.language.split('-')[0];
-        document.getElementById('step-text').innerText = messages[userLang] || messages['en'];
+        document.getElementById('step-text').innerText = translations[userLang] || translations['en'];
 
         const stepElement = document.getElementById('step-number');
         let startTime = null;
