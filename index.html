@@ -10,9 +10,8 @@
         body, html {
             width: 100%;
             height: 100%;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            overflow: hidden;
-            background-color: #111;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,32 +20,30 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Arka Plan Görseli */
+        /* Arka Plan: Garantili ve Şık Bir Gece Sokak Görseli */
         .bg-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Belirttiğin dosya ismini buraya tanımladık */
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-                        url('vague_background_1.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1476900966873-ab290e38e3f7?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            z-index: -2;
+            z-index: -1;
         }
 
         .container {
             max-width: 500px;
             width: 90%;
-            z-index: 1;
         }
 
         .logo {
-            width: 360px; 
-            max-width: 85%;
+            width: 340px; 
+            max-width: 80%;
             margin-bottom: 40px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
         }
 
         .links {
@@ -58,43 +55,43 @@
         .btn {
             text-decoration: none;
             color: white;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             padding: 16px;
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            backdrop-filter: blur(8px);
+            font-weight: 300;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
             text-transform: uppercase;
             font-size: 0.9rem;
         }
 
         .btn:hover {
-            background: #fff;
-            color: #000;
+            background: white;
+            color: black;
         }
 
         .counter-box {
-            margin-top: 55px;
+            margin-top: 50px;
         }
 
         #step-text {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 8px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 200; /* İnce punto */
+            letter-spacing: 2px;
+            /* İstediğin İnce Punto */
+            font-weight: 200; 
         }
 
         #step-number {
-            /* İstediğin ultra-ince punto */
+            /* İstediğin Ultra İnce Punto */
             font-weight: 100; 
             font-size: 4rem;
             margin: 0;
-            letter-spacing: -1px;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            letter-spacing: -2px;
         }
     </style>
 </head>
@@ -103,10 +100,10 @@
     <div class="bg-image"></div>
 
     <div class="container">
-        <!-- Büyük Logo -->
+        <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Sosyal Linkler -->
+        <!-- Linkler -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -115,7 +112,7 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- 18.000 İnce Sayaç -->
+        <!-- İnce Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
@@ -125,7 +122,6 @@
     <script>
         const targetSteps = 18000; 
         const duration = 2500; 
-
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
             'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS',
@@ -143,12 +139,8 @@
             const progress = Math.min((timestamp - startTime) / duration, 1);
             const easeOut = 1 - Math.pow(1 - progress, 4);
             const currentSteps = Math.floor(easeOut * targetSteps);
-            
             stepElement.innerText = currentSteps.toLocaleString(userLang === 'tr' ? 'tr-TR' : 'en-US');
-            
-            if (progress < 1) {
-                window.requestAnimationFrame(animateSteps);
-            }
+            if (progress < 1) window.requestAnimationFrame(animateSteps);
         }
         window.requestAnimationFrame(animateSteps);
     </script>
