@@ -10,7 +10,8 @@
         body, html {
             width: 100%;
             height: 100%;
-            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            overflow: hidden;
             background-color: #000;
             display: flex;
             justify-content: center;
@@ -26,9 +27,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Önbelleği kırmak için sonuna ?v=1 ekledim */
+            /* Belirttiğin yeni PNG dosyası ve önbellek kırmak için versiyon eki */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('vague_background_1.jpg?v=1');
+                        url('./vague_bg_1.png?v=2');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -37,6 +38,7 @@
         .container {
             max-width: 500px;
             width: 90%;
+            z-index: 1;
         }
 
         .logo {
@@ -63,23 +65,31 @@
             letter-spacing: 1px;
             backdrop-filter: blur(5px);
             text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .btn:hover { background: white; color: black; }
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
 
-        .counter-box { margin-top: 50px; }
+        .counter-box {
+            margin-top: 55px;
+        }
 
         #step-text {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 5px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 200; /* İNCE PUNTO */
+            letter-spacing: 3px;
+            /* İNCE PUNTO */
+            font-weight: 200; 
         }
 
         #step-number {
-            font-weight: 100; /* ULTRA İNCE PUNTO */
+            /* ULTRA İNCE PUNTO */
+            font-weight: 100; 
             font-size: 4rem;
             margin: 0;
             letter-spacing: -2px;
@@ -108,8 +118,9 @@
     </div>
 
     <script>
-        const targetSteps = 18000;
+        const targetSteps = 18000; 
         const duration = 2500; 
+
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
             'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS'
