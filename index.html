@@ -20,15 +20,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Arka Plan: Garantili ve Şık Bir Gece Sokak Görseli */
         .bg-image {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            /* BURASI KRİTİK: Senin yüklediğin resmi çağırıyoruz, dış link yok! */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1476900966873-ab290e38e3f7?q=80&w=2000&auto=format&fit=crop');
+                        url('./vague_background_1.jpg');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -82,12 +82,12 @@
             margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            /* İstediğin İnce Punto */
+            /* İSTEDİĞİN İNCE PUNTO */
             font-weight: 200; 
         }
 
         #step-number {
-            /* İstediğin Ultra İnce Punto */
+            /* İSTEDİĞİN ULTRA İNCE PUNTO */
             font-weight: 100; 
             font-size: 4rem;
             margin: 0;
@@ -100,10 +100,8 @@
     <div class="bg-image"></div>
 
     <div class="container">
-        <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Linkler -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -112,7 +110,6 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- İnce Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
