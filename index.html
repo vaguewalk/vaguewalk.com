@@ -5,93 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vague Walk</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            /* Attığın görsele en yakın, uzun pozlama ışık izli profesyonel sokak görseli */
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
-                        url('https://images.unsplash.com/photo-1506146332389-18140ed74d5b?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            color: white;
+            /* Arka planı doğrudan body'e değil, bir katmana veriyoruz ki yüklenmesi garantilensin */
+            background: #222; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             text-align: center;
+            color: white;
             overflow: hidden;
         }
 
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Attığın gece/ışık izli görsele en yakın yüksek kalite street görseli */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
         .container {
-            max-width: 480px;
+            max-width: 500px;
             width: 90%;
+            z-index: 1;
         }
 
         .logo {
-            /* Logoyu senin istediğin gibi daha büyük ve baskın hale getirdik */
-            width: 280px; 
-            margin-bottom: 45px;
-            filter: drop-shadow(0 5px 20px rgba(0,0,0,0.6));
+            /* Logoyu iyice büyüttük, senin örnekteki gibi çok baskın */
+            width: 320px; 
+            max-width: 80%;
+            margin-bottom: 50px;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
         }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .btn {
             text-decoration: none;
             color: white;
             background: rgba(255, 255, 255, 0.1);
-            padding: 16px;
-            border-radius: 50px;
+            padding: 18px;
+            border-radius: 60px;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            backdrop-filter: blur(10px);
             text-transform: uppercase;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .btn:hover {
-            background: rgba(255, 255, 255, 1);
-            color: black;
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
 
         .counter-box {
-            margin-top: 55px;
-            padding-top: 25px;
+            margin-top: 60px;
         }
 
         #step-text {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 12px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 3px;
         }
 
         #step-number {
-            font-size: 3.2rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             margin: 0;
-            text-shadow: 0 5px 20px rgba(0,0,0,0.7);
+            text-shadow: 0 8px 25px rgba(0,0,0,0.8);
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-overlay"></div>
+
     <div class="container">
-        <!-- Büyük Logo -->
+        <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
-        <!-- Güncel Linkler -->
+        <!-- Butonlar -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -100,7 +115,7 @@
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
 
-        <!-- 18.000 Adım Sayacı -->
+        <!-- Adım Sayacı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
@@ -109,7 +124,7 @@
 
     <script>
         const targetSteps = 18000; 
-        const duration = 2800; 
+        const duration = 3000; 
 
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
