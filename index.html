@@ -6,59 +6,141 @@
     <title>Vague Walk</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image_6e1e69.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+            max-width: 420px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            width: 190px;
+            margin-bottom: 30px;
+        }
+
+        .links {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            gap: 12px;
         }
-        .profile-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .link-button {
-            width: 100%;
-            max-width: 320px;
-            background-color: #1a1a1a;
-            border: 1px solid #333333;
-            color: #ffffff;
-            padding: 16px;
-            margin-bottom: 12px;
-            border-radius: 8px;
+
+        .btn {
             text-decoration: none;
-            text-align: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            border-radius: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1rem;
         }
-        .link-button:hover {
-            background-color: #ffffff;
-            color: #000000;
-            transform: scale(1.02);
+
+        .btn:hover {
+            background: white;
+            color: #000;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-        .footer {
+
+        .counter-box {
             margin-top: 40px;
-            font-size: 12px;
-            color: #666666;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 25px;
+        }
+
+        #step-text {
+            font-size: 0.85rem;
+            color: #bbb;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #step-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 <body>
-    <div class="profile-title">VAGUE WALK</div>
-    
-    <a href="https://youtube.com/@vaguewalkcom" class="link-button" target="_blank">YouTube</a>
-    <a href="https://www.tiktok.com/@vaguewalkcom" class="link-button" target="_blank">TikTok</a>
-    <a href="https://pin.it/8E26zAlH9" class="link-button" target="_blank">Pinterest</a>
-    <a href="https://x.com/vaguewalkcom" class="link-button" target="_blank">X (Twitter)</a>
-    <a href="mailto:iletisim@vaguewalk.com" class="link-button">İletişim</a>
 
-    <div class="footer">© 2026 Vague Walk</div>
+    <div class="container">
+        <!-- Logo -->
+        <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
+
+        <!-- Güncellenmiş Sosyal Medya Linkleri -->
+        <div class="links">
+            <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YouTube</a>
+            <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">Instagram</a>
+            <a href="https://www.tiktok.com/@vaguewalkcom" target="_blank" class="btn">TikTok</a>
+            <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">Pinterest</a>
+            <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (Twitter)</a>
+        </div>
+
+        <!-- Animasyonlu Sayaç -->
+        <div class="counter-box">
+            <p id="step-text"></p>
+            <p id="step-number">0</p>
+        </div>
+    </div>
+
+    <script>
+        // Hedef Adım Sayısı
+        const targetSteps = 125450; 
+        const duration = 3000; // 3 saniyede tamamlansın
+
+        // Dinamik Dil Desteği
+        const messages = {
+            'tr': 'Video çekimleri için atılan toplam adım',
+            'en': 'Total steps taken for video shoots',
+            'de': 'Gesamtschritte für Videoaufnahmen',
+            'fr': 'Pas totaux pour les tournages vidéo',
+            'es': 'Pasos totales para rodajes de video'
+        };
+
+        const userLang = navigator.language.split('-')[0];
+        document.getElementById('step-text').innerText = messages[userLang] || messages['en'];
+
+        const stepElement = document.getElementById('step-number');
+        let startTime = null;
+
+        function animateSteps(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            
+            // Kolaylaştırma (Ease-out) fonksiyonu ile daha doğal artış
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentSteps = Math.floor(easeOut * targetSteps);
+            
+            stepElement.innerText = currentSteps.toLocaleString(userLang === 'tr' ? 'tr-TR' : 'en-US');
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(animateSteps);
+            }
+        }
+        window.requestAnimationFrame(animateSteps);
+    </script>
 </body>
 </html>
