@@ -10,8 +10,7 @@
         body, html {
             width: 100%;
             height: 100%;
-            /* Modern ve ince bir yazı tipi ailesi */
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", Arial, sans-serif;
             background-color: #000;
             display: flex;
             justify-content: center;
@@ -27,9 +26,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Sadece senin yüklediğin dosyayı çağırıyoruz */
+            /* Önbelleği kırmak için sonuna ?v=1 ekledim */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('./vague_background_1.jpg');
+                        url('vague_background_1.jpg?v=1');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -44,7 +43,6 @@
             width: 340px; 
             max-width: 80%;
             margin-bottom: 40px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
         }
 
         .links {
@@ -65,17 +63,11 @@
             letter-spacing: 1px;
             backdrop-filter: blur(5px);
             text-transform: uppercase;
-            font-size: 0.9rem;
         }
 
-        .btn:hover {
-            background: white;
-            color: black;
-        }
+        .btn:hover { background: white; color: black; }
 
-        .counter-box {
-            margin-top: 50px;
-        }
+        .counter-box { margin-top: 50px; }
 
         #step-text {
             font-size: 0.8rem;
@@ -83,13 +75,11 @@
             margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            /* İstediğin İnce Punto */
-            font-weight: 200; 
+            font-weight: 200; /* İNCE PUNTO */
         }
 
         #step-number {
-            /* İstediğin Ultra İnce Punto */
-            font-weight: 100; 
+            font-weight: 100; /* ULTRA İNCE PUNTO */
             font-size: 4rem;
             margin: 0;
             letter-spacing: -2px;
@@ -101,7 +91,6 @@
     <div class="bg-image"></div>
 
     <div class="container">
-        <!-- Senin yüklediğin logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
 
         <div class="links">
@@ -123,8 +112,7 @@
         const duration = 2500; 
         const translations = {
             'tr': 'VİDEO ÇEKİMLERİ İÇİN ATILAN TOPLAM ADIM',
-            'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS',
-            'de': 'GESAMTSCHRITTE FÜR VIDEOAUFNAHMEN'
+            'en': 'TOTAL STEPS TAKEN FOR VIDEO SHOOTS'
         };
 
         const userLang = navigator.language.split('-')[0];
