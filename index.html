@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBH0C9M9QF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBH0C9M9QF');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vague Walk</title>
@@ -71,7 +80,7 @@
         }
 
         #step-number {
-            font-weight: 100; /* Ultra İnce Punto */
+            font-weight: 100;
             font-size: 4.5rem;
             margin: 0;
             letter-spacing: -1px;
@@ -118,12 +127,8 @@
             const progress = Math.min((timestamp - startTime) / duration, 1);
             const easeOut = 1 - Math.pow(1 - progress, 4);
             const currentValue = Math.floor(easeOut * targetValue);
-            
             stepElement.innerText = currentValue;
-            
-            if (progress < 1) {
-                window.requestAnimationFrame(animateValue);
-            }
+            if (progress < 1) window.requestAnimationFrame(animateValue);
         }
         window.requestAnimationFrame(animateValue);
     </script>
