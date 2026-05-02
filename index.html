@@ -18,37 +18,96 @@
     <title>Vague Walk</title>
     <meta name="description" content="Atmosferik sokak yürüyüşleri ve Bursa'nın eşsiz rotaları.">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Favicon - Yeni dosya ismine göre güncellendi -->
+    <link rel="icon" type="image/png" href="fav1.png">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body, html {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-color: #000;
-            display: flex; justify-content: center; align-items: center;
-            text-align: center; color: white;
-            -webkit-font-smoothing: antialiased; overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
         }
-        .container { max-width: 500px; width: 90%; display: flex; flex-direction: column; align-items: center; }
-        .logo { width: 320px; max-width: 85%; margin-bottom: 40px; height: auto; }
-        .links { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            width: 320px; 
+            max-width: 85%;
+            margin-bottom: 40px;
+            height: auto;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
         .btn {
-            text-decoration: none; color: white; background: rgba(255, 255, 255, 0.05);
-            padding: 15px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease; font-weight: 300; letter-spacing: 1.5px;
-            text-transform: uppercase; font-size: 0.85rem;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
-        .btn:hover { background: #fff; color: #000; }
-        .counter-box { margin-top: 50px; }
-        #step-text { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; font-weight: 200; }
-        #step-number { font-weight: 100; font-size: 4.5rem; margin: 0; letter-spacing: -1px; line-height: 1; }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .counter-box {
+            margin-top: 50px;
+        }
+
+        #step-text {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 200;
+        }
+
+        #step-number {
+            font-weight: 100;
+            font-size: 4.5rem;
+            margin: 0;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- Logo -->
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
+
+        <!-- Sosyal Medya Linkleri -->
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
             <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
@@ -56,25 +115,40 @@
             <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">PINTEREST</a>
             <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
+
+        <!-- Sayaç Alanı -->
         <div class="counter-box">
             <p id="step-text"></p>
             <p id="step-number">0</p>
         </div>
     </div>
+
     <script>
         const targetValue = 69; 
         const duration = 2000; 
-        const translations = { 'tr': 'KATEDİLEN TOPLAM MESAFE (KM)', 'en': 'TOTAL DISTANCE COVERED (KM)' };
+
+        const translations = {
+            'tr': 'KATEDİLEN TOPLAM MESAFE (KM)',
+            'en': 'TOTAL DISTANCE COVERED (KM)'
+        };
+
         const userLang = navigator.language.split('-')[0];
         document.getElementById('step-text').innerText = translations[userLang] || translations['en'];
+
         const stepElement = document.getElementById('step-number');
         let startTime = null;
+
         function animateValue(timestamp) {
             if (!startTime) startTime = timestamp;
             const progress = Math.min((timestamp - startTime) / duration, 1);
             const easeOut = 1 - Math.pow(1 - progress, 4);
-            stepElement.innerText = Math.floor(easeOut * targetValue);
-            if (progress < 1) window.requestAnimationFrame(animateValue);
+            const currentValue = Math.floor(easeOut * targetValue);
+            
+            stepElement.innerText = currentValue;
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(animateValue);
+            }
         }
         window.requestAnimationFrame(animateValue);
     </script>
