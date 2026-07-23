@@ -37,50 +37,117 @@
         }
         .container { max-width: 500px; width: 90%; display: flex; flex-direction: column; align-items: center; }
         .logo { width: 320px; max-width: 85%; margin-bottom: 40px; height: auto; }
-        .links { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+        .links { display: flex; flex-direction: column; gap: 20px; width: 100%; margin-bottom: 30px; }
         .btn {
-            text-decoration: none; color: white; background: rgba(255, 255, 255, 0.05);
-            padding: 15px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease; font-weight: 300; letter-spacing: 1.5px;
-            text-transform: uppercase; font-size: 0.85rem;
+            text-decoration: none; color: #000; background: #fff;
+            padding: 18px; border-radius: 50px; 
+            transition: all 0.3s ease; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
         }
-        .btn:hover { background: #fff; color: #000; }
-        .counter-box { margin-top: 50px; }
-        #step-text { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; font-weight: 200; }
-        #step-number { font-weight: 100; font-size: 4.5rem; margin: 0; letter-spacing: -1px; line-height: 1; }
+        .btn:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(255,255,255,0.4); }
+        .support-box { margin-top: 10px; padding: 0 20px; }
+        #support-text { 
+            font-size: 0.9rem; color: rgba(255,255,255,0.7); 
+            line-height: 1.5; font-weight: 300; letter-spacing: 0.5px; 
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <img src="vague_logo_1.png" alt="Vague Walk" class="logo">
+        
         <div class="links">
             <a href="https://youtube.com/@vaguewalkcom" target="_blank" class="btn">YOUTUBE</a>
-            <a href="https://www.instagram.com/vaguewalkcom" target="_blank" class="btn">INSTAGRAM</a>
-            <a href="https://www.tiktok.com/@vaguewalkcom" target="_blank" class="btn">TIKTOK</a>
-            <a href="https://pin.it/LIjjJITcK" target="_blank" class="btn">PINTEREST</a>
-            <a href="https://x.com/vaguewalkcom" target="_blank" class="btn">X (TWITTER)</a>
         </div>
-        <div class="counter-box">
-            <p id="step-text"></p>
-            <p id="step-number">0</p>
+        
+        <div class="support-box">
+            <p id="support-text"></p>
         </div>
     </div>
 
     <script>
-        const targetValue = 69; 
-        const duration = 2000; 
-
         const content = {
             'tr': {
                 'title': 'Vague Walk | 4K Sokak Yürüyüşleri',
                 'desc': 'Vague Walk: Modern şehir hayatının 4K rahatlatıcı ve gerçekçi sokak turları.',
-                'counter': 'ÇEKİMLER İÇİN KATEDİLEN MESAFE (KM)'
+                'support': 'Kanalımıza abone olarak bize destek olabilirsiniz.'
             },
             'en': {
                 'title': 'Vague Walk | 4K Street Walks',
                 'desc': 'Vague Walk: 4K relaxing and realistic street tours of modern city life.',
-                'counter': 'DISTANCE COVERED FOR FILMING (KM)'
+                'support': 'You can support us by subscribing to our channel.'
+            },
+            'es': {
+                'title': 'Vague Walk | Paseos Callejeros en 4K',
+                'desc': 'Vague Walk: Recorridos callejeros relajantes y realistas en 4K.',
+                'support': 'Puedes apoyarnos suscribiéndote a nuestro canal.'
+            },
+            'de': {
+                'title': 'Vague Walk | 4K Straßenrundgänge',
+                'desc': 'Vague Walk: Entspannende und realistische 4K-Straßenrundgänge.',
+                'support': 'Sie können uns unterstützen, indem Sie unseren Kanal abonnieren.'
+            },
+            'fr': {
+                'title': 'Vague Walk | Promenades de Rue en 4K',
+                'desc': 'Vague Walk : Visites de rues relaxantes et réalistes en 4K.',
+                'support': 'Vous pouvez nous soutenir en vous abonnant à notre chaîne.'
+            },
+            'ru': {
+                'title': 'Vague Walk | 4K Уличные Прогулки',
+                'desc': 'Vague Walk: Расслабляющие и реалистичные 4K уличные туры.',
+                'support': 'Вы можете поддержать нас, подписавшись на наш канал.'
+            },
+            'ja': {
+                'title': 'Vague Walk | 4K ストリートウォーク',
+                'desc': 'Vague Walk：モダンな都市生活のリラックスできるリアルな4Kストリートツアー。',
+                'support': 'チャンネル登録をして応援していただけると嬉しいです。'
+            },
+            'ko': {
+                'title': 'Vague Walk | 4K 스트리트 워크',
+                'desc': 'Vague Walk: 편안하고 사실적인 4K 스트리트 투어.',
+                'support': '채널을 구독하여 저희를 지원해 주시면 감사하겠습니다.'
+            },
+            'pt': {
+                'title': 'Vague Walk | Caminhadas em 4K',
+                'desc': 'Vague Walk: Passeios de rua relaxantes e realistas em 4K.',
+                'support': 'Você pode nos apoiar inscrevendo-se em nosso canal.'
+            },
+            'it': {
+                'title': 'Vague Walk | Passeggiate in 4K',
+                'desc': 'Vague Walk: Rilassanti e realistici tour delle strade in 4K.',
+                'support': 'Puoi sostenerci iscrivendoti al nostro canale.'
+            },
+            'ar': {
+                'title': 'Vague Walk | 4K جولات في الشوارع',
+                'desc': 'Vague Walk: جولات واقعية ومريحة في شوارع المدينة الحديثة بدقة 4K.',
+                'support': 'يمكنك دعمنا من خلال الاشتراك في قناتنا.'
+            },
+            'hi': {
+                'title': 'Vague Walk | 4K स्ट्रीट वॉक',
+                'desc': 'Vague Walk: आधुनिक शहर के जीवन के 4K आरामदायक और यथार्थवादी स्ट्रीट टूर।',
+                'support': 'आप हमारे चैनल को सब्सक्राइब करके हमारा समर्थन कर सकते हैं।'
+            },
+            'ur': {
+                'title': 'Vague Walk | 4K اسٹریٹ واک',
+                'desc': 'Vague Walk: جدید شہری زندگی کے 4K آرام دہ اور حقیقت پسندانہ اسٹریٹ ٹورز۔',
+                'support': 'آپ ہمارے چینل کو سبسکرائب کر کے ہماری مدد کر سکتے ہیں۔'
+            },
+            'zh': {
+                'title': 'Vague Walk | 4K 街头漫步',
+                'desc': 'Vague Walk：现代城市生活的 4K 轻松逼真街头漫步。',
+                'support': '欢迎订阅我们的频道来支持我们。'
+            },
+            'nl': {
+                'title': 'Vague Walk | 4K Stadswandelingen',
+                'desc': 'Vague Walk: Ontspannende en realistische 4K stadstours van het moderne stadsleven.',
+                'support': 'Je kunt ons steunen door je te abonneren op ons kanaal.'
+            },
+            'pl': {
+                'title': 'Vague Walk | Wideo ze spacerów 4K',
+                'desc': 'Vague Walk: Relaksujące i realistyczne spacery 4K po nowoczesnym mieście.',
+                'support': 'Możesz nas wesprzeć, subskrybując nasz kanał.'
             }
         };
 
@@ -89,19 +156,7 @@
 
         document.title = selected.title;
         document.getElementById('meta-desc').setAttribute('content', selected.desc);
-        document.getElementById('step-text').innerText = selected.counter;
-
-        const stepElement = document.getElementById('step-number');
-        let startTime = null;
-
-        function animateValue(timestamp) {
-            if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const easeOut = 1 - Math.pow(1 - progress, 4);
-            stepElement.innerText = Math.floor(easeOut * targetValue);
-            if (progress < 1) window.requestAnimationFrame(animateValue);
-        }
-        window.requestAnimationFrame(animateValue);
+        document.getElementById('support-text').innerText = selected.support;
     </script>
 </body>
 </html>
