@@ -160,9 +160,59 @@
             }
         };
 
-        const userLang = navigator.language.split('-')[0];
+        function detectUserLang() {
+            // 1. Tarayıcının tüm dil tercihlerini tarayıp İngilizce dışındaki yerel dili önceliklendir
+            const browserLangs = navigator.languages || [navigator.language || 'en'];
+            for (let lang of browserLangs) {
+                const code = lang.split('-')[0].toLowerCase();
+                if (content[code] && code !== 'en') {
+                    return code;
+                }
+            }
+
+            // 2. Tarayıcı tamamen İngilizceyse cihazın bölgesel saat diliminden ülkeyi yakala
+            try {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const tzMap = {
+                    'Europe/Istanbul': 'tr',
+                    'Asia/Istanbul': 'tr',
+                    'Europe/Berlin': 'de',
+                    'Europe/Vienna': 'de',
+                    'Europe/Zurich': 'de',
+                    'Europe/Paris': 'fr',
+                    'Europe/Madrid': 'es',
+                    'America/Mexico_City': 'es',
+                    'America/Argentina/Buenos_Aires': 'es',
+                    'Europe/Moscow': 'ru',
+                    'Asia/Tokyo': 'ja',
+                    'Asia/Seoul': 'ko',
+                    'America/Sao_Paulo': 'pt',
+                    'Europe/Lisbon': 'pt',
+                    'Europe/Rome': 'it',
+                    'Asia/Riyadh': 'ar',
+                    'Asia/Dubai': 'ar',
+                    'Africa/Cairo': 'ar',
+                    'Asia/Kolkata': 'hi',
+                    'Asia/Calcutta': 'hi',
+                    'Asia/Karachi': 'ur',
+                    'Asia/Shanghai': 'zh',
+                    'Asia/Hong_Kong': 'zh',
+                    'Asia/Taipei': 'zh',
+                    'Europe/Amsterdam': 'nl',
+                    'Europe/Warsaw': 'pl'
+                };
+                if (tz && tzMap[tz]) {
+                    return tzMap[tz];
+                }
+            } catch (e) {}
+
+            return 'en';
+        }
+
+        const userLang = detectUserLang();
         const selected = content[userLang] || content['en'];
 
+        document.documentElement.lang = userLang;
         document.title = selected.title;
         document.getElementById('meta-desc').setAttribute('content', selected.desc);
         document.getElementById('support-text').innerText = selected.support;
