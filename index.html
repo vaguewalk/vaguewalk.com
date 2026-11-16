@@ -23,6 +23,65 @@
     <title>Vague Walk | 4K Street Walks</title>
     <meta id="meta-desc" name="description" content="Vague Walk: 4K relaxing and realistic street tours of modern city life.">
 
+    <!-- Uluslararası Canonical ve Varsayılan Dil Sinyalleri -->
+    <link rel="canonical" href="https://vaguewalk.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://vaguewalk.com/" />
+    <link rel="alternate" hreflang="en" href="https://vaguewalk.com/" />
+
+    <!-- Open Graph / Sosyal Medya ve Arama Önizleme Etiketleri -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vague Walk" />
+    <meta property="og:url" content="https://vaguewalk.com/" />
+    <meta id="og-title" property="og:title" content="Vague Walk | 4K Street Walks" />
+    <meta id="og-desc" property="og:description" content="Vague Walk: 4K relaxing and realistic street tours of modern city life." />
+    <meta property="og:image" content="https://vaguewalk.com/istiklal.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
+    <meta property="og:locale:alternate" content="az_AZ" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:locale:alternate" content="ar_AR" />
+    <meta property="og:locale:alternate" content="fa_IR" />
+    <meta property="og:locale:alternate" content="ja_JP" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+
+    <!-- Schema.org Çok Dilli Yapısal Veri (JSON-LD) -->
+    <script type="application/ld+json" id="structured-data">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://vaguewalk.com/#website",
+          "url": "https://vaguewalk.com/",
+          "name": "Vague Walk",
+          "alternateName": ["Vague Walk 4K", "Vague Walk Street Walks"],
+          "description": "4K relaxing and realistic street tours of modern city life.",
+          "inLanguage": [
+            "az", "id", "ms", "de", "en", "es", "fr", "it", "nl", "pl",
+            "pt", "ro", "vi", "tr", "el", "bg", "ru", "uk", "ka", "ar",
+            "fa", "ur", "bn", "hi", "th", "zh", "ja", "ko"
+          ],
+          "publisher": {
+            "@id": "https://vaguewalk.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://vaguewalk.com/#organization",
+          "name": "Vague Walk",
+          "url": "https://vaguewalk.com/",
+          "logo": "https://vaguewalk.com/vague_logo_1.png",
+          "sameAs": [
+            "https://youtube.com/@vaguewalkcom"
+          ]
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="fav2.png">
 
     <!-- Görselleri en yüksek öncelikle önden yükle -->
@@ -366,6 +425,8 @@
             document.documentElement.lang = langCode;
             document.title = selected.title;
             document.getElementById('meta-desc').setAttribute('content', selected.desc);
+            document.getElementById('og-title').setAttribute('content', selected.title);
+            document.getElementById('og-desc').setAttribute('content', selected.desc);
             document.getElementById('support-text').innerText = selected.support;
             currentLangCode.innerText = langCode.toUpperCase();
 
