@@ -83,7 +83,7 @@
             position: absolute;
             top: calc(100% + 8px);
             right: 0;
-            width: 165px;
+            width: 190px;
             max-height: 310px;
             overflow-y: auto;
             background: rgba(15, 15, 15, 0.92);
@@ -187,6 +187,24 @@
 
     <script>
         const content = {
+            'az': {
+                'name': 'Azərbaycan',
+                'title': 'Vague Walk | 4K Küçə Gəzintiləri',
+                'desc': 'Vague Walk: Müasir şəhər həyatının 4K sakitləşdirici və real küçə turları.',
+                'support': 'Kanalımıza abunə olaraq bizə dəstək ola bilərsiniz.'
+            },
+            'id': {
+                'name': 'Bahasa Indonesia',
+                'title': 'Vague Walk | Jalan-jalan 4K',
+                'desc': 'Vague Walk: Tur jalan kaki 4K yang menenangkan dan realistis di kehidupan kota modern.',
+                'support': 'Anda dapat mendukung kami dengan berlangganan saluran kami.'
+            },
+            'ms': {
+                'name': 'Bahasa Melayu',
+                'title': 'Vague Walk | Berjalan Kaki 4K',
+                'desc': 'Vague Walk: Lawatan jalanan 4K yang menenangkan dan realistik dalam kehidupan bandar moden.',
+                'support': 'Anda boleh menyokong kami dengan melanggan saluran kami.'
+            },
             'de': {
                 'name': 'Deutsch',
                 'title': 'Vague Walk | 4K Straßenrundgänge',
@@ -235,11 +253,35 @@
                 'desc': 'Vague Walk: Passeios de rua relaxantes e realistas em 4K.',
                 'support': 'Você pode nos apoiar inscrevendo-se em nosso canal.'
             },
+            'ro': {
+                'name': 'Română',
+                'title': 'Vague Walk | Plimbări Stradale 4K',
+                'desc': 'Vague Walk: Tururi stradale 4K relaxante și realiste ale vieții urbane moderne.',
+                'support': 'Ne puteți susține abonându-vă la canalul nostru.'
+            },
+            'vi': {
+                'name': 'Tiếng Việt',
+                'title': 'Vague Walk | Đi Bộ Đường Phố 4K',
+                'desc': 'Vague Walk: Những chuyến đi bộ đường phố 4K thư giãn và chân thực của cuộc sống đô thị hiện đại.',
+                'support': 'Bạn có thể ủng hộ chúng tôi bằng cách đăng ký kênh của chúng tôi.'
+            },
             'tr': {
                 'name': 'Türkçe',
                 'title': 'Vague Walk | 4K Sokak Yürüyüşleri',
                 'desc': 'Vague Walk: Modern şehir hayatının 4K rahatlatıcı ve gerçekçi sokak turları.',
                 'support': 'Kanalımıza abone olarak bize destek olabilirsiniz.'
+            },
+            'el': {
+                'name': 'Ελληνικά',
+                'title': 'Vague Walk | Περίπατοι Δρόμου 4K',
+                'desc': 'Vague Walk: Χαλαρωτικές και ρεαλιστικές περιηγήσεις δρόμου 4K της σύγχρονης αστικής ζωής.',
+                'support': 'Μπορείτε να μας υποστηρίξετε κάνοντας εγγραφή στο κανάλι μας.'
+            },
+            'bg': {
+                'name': 'Български',
+                'title': 'Vague Walk | 4K Улични Разходки',
+                'desc': 'Vague Walk: Релаксиращи и реалистични 4K улични обиколки на съвременния градски живот.',
+                'support': 'Можете да ни подкрепите, като се абонирате за нашия канал.'
             },
             'ru': {
                 'name': 'Русский',
@@ -247,11 +289,29 @@
                 'desc': 'Vague Walk: Расслабляющие и реалистичные 4K уличные туры.',
                 'support': 'Вы можете поддержать нас, подписавшись на наш канал.'
             },
+            'uk': {
+                'name': 'Українська',
+                'title': 'Vague Walk | 4K Вуличні Прогулянки',
+                'desc': 'Vague Walk: Розслаблюючі та реалістичні 4K вуличні прогулянки сучасним містом.',
+                'support': 'Ви можете підтримати нас, підписавшись на наш канал.'
+            },
+            'ka': {
+                'name': 'ქართული',
+                'title': 'Vague Walk | 4K ქუჩის სეირნობა',
+                'desc': 'Vague Walk: თანამედროვე ქალაქის ცხოვრების 4K დამამშვიდებელი და რეალისტური ქუჩის ტურები.',
+                'support': 'შეგიძლიათ მხარი დაგვიჭიროთ ჩვენი არხის გამოწერით.'
+            },
             'ar': {
                 'name': 'العربية',
                 'title': 'Vague Walk | 4K جولات في الشوارع',
                 'desc': 'Vague Walk: جولات واقعية ومريحة في شوارع المدينة الحديثة بدقة 4K.',
                 'support': 'يمكنك دعمنا من خلال الاشتراك في قناتنا.'
+            },
+            'fa': {
+                'name': 'فارسی',
+                'title': 'Vague Walk | پیاده‌روی خیابانی 4K',
+                'desc': 'Vague Walk: تورهای خیابانی آرامش‌بخش و واقعی 4K از زندگی مدرن شهری.',
+                'support': 'می‌توانید با مشترک شدن در کانال ما از ما حمایت کنید.'
             },
             'ur': {
                 'name': 'اردو',
@@ -259,11 +319,23 @@
                 'desc': 'Vague Walk: جدید شہری زندگی کے 4K آرام دہ اور حقیقت پسندانہ اسٹریٹ ٹورز۔',
                 'support': 'آپ ہمارے چینل کو سبسکرائب کر کے ہماری مدد کر سکتے ہیں۔'
             },
+            'bn': {
+                'name': 'বাংলা',
+                'title': 'Vague Walk | 4K স্ট্রিট ওয়াক',
+                'desc': 'Vague Walk: আধুনিক শহরের জীবনের 4K আরামদায়ক এবং বাস্তবসম্মত স্ট্রিট ট্যুর।',
+                'support': 'আমাদের চ্যানেলটি সাবস্ক্রাইব করে আপনি আমাদের সমর্থন করতে পারেন।'
+            },
             'hi': {
                 'name': 'हिन्दी',
                 'title': 'Vague Walk | 4K स्ट्रीट वॉक',
                 'desc': 'Vague Walk: आधुनिक शहर के जीवन के 4K आरामदायक और यथार्थवादी स्ट्रीट टूर।',
                 'support': 'आप हमारे चैनल को सब्सक्राइब करके हमारा समर्थन कर सकते हैं।'
+            },
+            'th': {
+                'name': 'ไทย',
+                'title': 'Vague Walk | เดินชมเมือง 4K',
+                'desc': 'Vague Walk: ทัวร์เดินชมถนน 4K ที่ผ่อนคลายและสมจริงของชีวิตเมืองสมัยใหม่',
+                'support': 'คุณสามารถสนับสนุนเราได้โดยการกดติดตามช่องของเรา'
             },
             'zh': {
                 'name': '中文',
@@ -306,7 +378,7 @@
             } catch (e) {}
         }
 
-        // Menüyü alfabetik sıraya göre 16 dil ile doldur
+        // Menüyü alfabetik sıraya göre 28 dil ile doldur
         Object.keys(content)
             .sort((a, b) => content[a].name.localeCompare(content[b].name))
             .forEach(code => {
